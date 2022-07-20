@@ -14,22 +14,21 @@ const database = "journal_app";
 const port = "5432";
 const pass = "postgres";
 
-// SEQUELIZE CONNECTION
-const sequelize = new Sequelize(database, user, pass, {
-    host,
-    port,
-    dialect: "postgres",
-    logging: false
+// // SEQUELIZE CONNECTION
+// const sequelize = new Sequelize(database, user, pass, {
+//     host,
+//     port,
+//     dialect: "postgres",
+//     logging: false
     
-})
+// })
 
-try {
-    sequelize.authenticate() 
-    console.log(`Connected with Sequelize at ${process.env.PG_URI}`) 
-} catch(err) {
-    console.log(`Unable to connect to PG: ${err}`) 
-}
-
+// try {
+//     sequelize.authenticate() 
+//     console.log(`Connected with Sequelize at ${process.env.PG_URI}`) 
+// } catch(err) {
+//     console.log(`Unable to connect to PG: ${err}`) 
+// }
 
 
 // ROOT
@@ -38,6 +37,13 @@ app.get('/', (req, res) => {
         message: 'Welcome to my journal app'
     })
 })
+
+
+// CONTROLLERS 
+const entriesController = require('./controllers/entries_controller')
+app.use('/entries', entriesController)
+
+
 
 // LISTEN
 app.listen(process.env.PORT, () => {
