@@ -31,13 +31,19 @@ const pass = "postgres";
 // }
 
 
-
 // ROOT
 app.get('/', (req, res) => {
     res.status(200).json({
         message: 'Welcome to my journal app'
     })
 })
+
+
+// CONTROLLERS 
+const entriesController = require('./controllers/entries_controller')
+app.use('/entries', entriesController)
+
+
 
 // LISTEN
 app.listen(process.env.PORT, () => {
