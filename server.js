@@ -43,6 +43,8 @@ app.get('/', (req, res) => {
 const entriesController = require('./controllers/entries_controller')
 app.use('/entries', entriesController)
 
+const usersController = require('./controllers/users_controller')
+app.use('/users', usersController)
 
 
 // LISTEN
