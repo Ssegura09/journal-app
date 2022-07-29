@@ -6,10 +6,7 @@ const { Entry } = db
 // FIND ALL ENTRIES
 entries.get('/', async (req, res) => {
     try {
-        const foundEntries = await Entry.findAll({
-            order: [ [ 'date', 'DESC']]
-            
-        })
+        const foundEntries = await Entry.findAll()
         res.status(200).json(foundEntries)
     } catch (error) {
         res.status(500).json(error)

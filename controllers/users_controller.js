@@ -1,7 +1,7 @@
 // DEPENDENCIES
 const users = require('express').Router()
 const db = require('../models')
-const { User } = db 
+const { User, Entry } = db 
 
 // FIND ALL USERS
 users.get('/', async (req, res) => {
@@ -13,11 +13,18 @@ users.get('/', async (req, res) => {
     }
 })
 
-// FIND A SPECIFIC ENTRY
+// FIND A SPECIFIC USER
 users.get('/:id', async (req, res) => {
     try {
         const foundUsers= await User.findOne({
-            where: { user_id: req.params.id }
+            where: { user_id: req.params.id },
+            include: [
+                {
+                    model: Entry,
+                    as: "user_entries",
+                    attributes: {exclude: ["mood", "description"] }
+                }
+            ]
         })
         res.status(200).json(foundUsers)
     } catch (error) {
