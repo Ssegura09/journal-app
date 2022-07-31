@@ -8,11 +8,6 @@ require('dotenv').config()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-const user = "postgres";
-const host = "localhost";
-const database = "journal_app";
-const port = "5432";
-const pass = "postgres";
 
 // // SEQUELIZE CONNECTION
 // const sequelize = new Sequelize(database, user, pass, {
