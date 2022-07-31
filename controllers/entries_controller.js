@@ -64,8 +64,8 @@ entries.delete('/:id', async (req, res) => {
         res.status(200).json({
             message: `Successfully deleted ${deletedEntries} entry`
         })
-    } catch(err) {
-        res.status(500).json(err)
+    } catch(error) {
+        res.status(500).json(error)
     }
 })
 
